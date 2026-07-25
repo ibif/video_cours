@@ -112,13 +112,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-          cache: "pip"
 
       - name: Installer TeX Live + ffmpeg (équivalent MiKTeX sous Linux)
         run: |
           sudo apt-get update
           sudo apt-get install -y texlive texlive-latex-extra texlive-fonts-extra \
-            texlive-science texlive-xetex ffmpeg
+            texlive-science texlive-xetex ffmpeg \
+            libpango1.0-dev libcairo2-dev pkg-config
 
       - name: Installer les dépendances Python
         run: pip install manim manim-voiceover edge-tts
@@ -138,6 +138,8 @@ jobs:
           fi
 
       - name: Rendu Manim
+        env:
+          PYTHONPATH: ${{ github.workspace }}
         run: |
           manim -${{ steps.qualite.outputs.valeur }} -a scenes/${{ matrix.chapitre }}.py \
             --media_dir media/${{ matrix.chapitre }}
