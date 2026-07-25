@@ -138,6 +138,8 @@ jobs:
           fi
 
       - name: Rendu Manim
+        env:
+          PYTHONPATH: ${{ github.workspace }}
         run: |
           manim -${{ steps.qualite.outputs.valeur }} -a scenes/${{ matrix.chapitre }}.py \
             --media_dir media/${{ matrix.chapitre }}
