@@ -24,7 +24,7 @@ from manim import (
     WHITE,
 )
 
-from constants import BOX_STYLES
+from constants import BOX_STYLES, BLACK_TEXT
 
 # --- Paramètres de mise en page communs ------------------------------------
 
@@ -50,6 +50,11 @@ def _make_box(
     d'équations, schéma, etc.) — la boîte s'adapte à sa hauteur réelle.
     """
     style = BOX_STYLES[style_key]
+
+    # Fond du corps toujours clair (voir couleur.pdf) : le contenu doit donc
+    # être en noir, jamais en blanc (couleur par défaut de Manim) sous peine
+    # d'être quasiment invisible dessus.
+    content.set_color(BLACK_TEXT)
 
     content.set(width=min(content.width, box_width - 2 * CONTENT_PADDING))
     content_height = content.height + 2 * CONTENT_PADDING
