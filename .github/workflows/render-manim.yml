@@ -1,0 +1,243 @@
+# .github/workflows/render-manim.yml
+#
+# Pipeline cloud ENTIÈREMENT AUTOMATISÉ pour les chapitres Manim
+# (1ereC / 1ereD). Aucune intervention humaine requise après le push —
+# voir CLAUDE.md, section "Pipeline autonome (écriture + rendu par l'IA)".
+#
+# ⚠️ Restreint au dépôt https://github.com/ibif/video_cours (condition
+# `if: github.repository == 'ibif/video_cours'` sur chaque job).
+#
+# DÉCLENCHEURS AUTOMATIQUES :
+#   1. push sur main                    → detect-scenes calcule le diff
+#                                          git ; si des scènes ont changé,
+#                                          smoke-test rapide (-ql).
+#                                          (Pas de filtre `paths:` ici — un
+#                                          filtre `paths` combiné à `tags`
+#                                          s'appliquerait aussi aux push de
+#                                          tag et empêcherait le rendu HD de
+#                                          se déclencher si le tag ne
+#                                          modifie aucun fichier. La
+#                                          décision "rien à faire" est donc
+#                                          déléguée à detect-scenes, pas au
+#                                          filtre GitHub.)
+#   2. push d'un tag                    → format OBLIGATOIRE :
+#      chapitre__<Serie>__<Matiere>__<NomChapitre>
+#      ex: chapitre__1ereC__Maths__Derivation
+#      → rendu HD complet (-qh), assemblage, ÉCRITURE DE LA VIDÉO DANS
+#        <Serie>/<Matiere>/ (à côté du PDF source), commit + push sur main,
+#        ET publication en GitHub Release (lien permanent, en plus du
+#        fichier dans le dépôt).
+#
+# ⚠️ <Matiere> dans le tag doit être IDENTIQUE au nom du PDF source sans
+# extension (ex: "Maths" pour 1ereC/Maths.pdf) — voir CLAUDE.md.
+#
+# workflow_dispatch reste disponible en secours pour un relancement manuel.
+
+name: Rendu Manim - Pipeline autonome
+
+on:
+  push:
+    branches: [main]
+    tags:
+      - "chapitre__*"
+  workflow_dispatch:
+    inputs:
+      chapitres:
+        description: "Secours manuel : scènes à rendre, séparées par des virgules"
+        required: false
+        default: ""
+      qualite:
+        description: "Secours manuel : qualité manim (ql/qh)"
+        required: false
+        default: "ql"
+
+jobs:
+  # ---------------------------------------------------------------------
+  # JOB 1 — Détection automatique (diff git / nom de tag / secours manuel).
+  # Logique dans .github/scripts/detect_scenes.py (pas de bash/python
+  # inline fragile).
+  # ---------------------------------------------------------------------
+  detect-scenes:
+    if: github.repository == 'ibif/video_cours'
+    runs-on: ubuntu-latest
+    outputs:
+      scenes: ${{ steps.detect.outputs.scenes }}
+      mode: ${{ steps.detect.outputs.mode }}
+      serie: ${{ steps.detect.outputs.serie }}
+      matiere: ${{ steps.detect.outputs.matiere }}
+      chapitre_nom: ${{ steps.detect.outputs.chapitre_nom }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Calculer le diff git (utilisé seulement en mode push normal)
+        id: diff
+        run: |
+          {
+            echo "fichiers<<EOF_DIFF"
+            git diff --name-only HEAD~1 HEAD -- 'scenes/*.py' 2>/dev/null || true
+            echo "EOF_DIFF"
+          } >> "$GITHUB_OUTPUT"
+
+      - id: detect
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          REF_TYPE: ${{ github.ref_type }}
+          REF_NAME: ${{ github.ref_name }}
+          MANUAL_CHAPITRES: ${{ inputs.chapitres }}
+          ACTOR: ${{ github.actor }}
+          FICHIERS_DIFF: ${{ steps.diff.outputs.fichiers }}
+        run: python3 .github/scripts/detect_scenes.py
+
+  # ---------------------------------------------------------------------
+  # JOB 2 — Rendu (qualité dépend du mode : ql pour smoke-test, qh pour
+  # un chapitre tagué comme terminé).
+  # ---------------------------------------------------------------------
+  render:
+    needs: detect-scenes
+    if: >
+      github.repository == 'ibif/video_cours' &&
+      needs.detect-scenes.outputs.scenes != '[]'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        chapitre: ${{ fromJson(needs.detect-scenes.outputs.scenes) }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Installer TeX Live + ffmpeg (équivalent MiKTeX sous Linux)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive texlive-latex-extra texlive-fonts-extra \
+            texlive-science texlive-xetex ffmpeg
+
+      - name: Installer les dépendances Python
+        run: pip install manim manim-voiceover edge-tts
+
+      - name: Compiler la scène (vérification syntaxe avant rendu)
+        run: python -m py_compile scenes/${{ matrix.chapitre }}.py
+
+      - name: Déterminer la qualité de rendu
+        id: qualite
+        run: |
+          if [[ "${{ needs.detect-scenes.outputs.mode }}" == "rendu-hd-final" ]]; then
+            echo "valeur=qh" >> "$GITHUB_OUTPUT"
+          elif [[ -n "${{ inputs.qualite }}" ]]; then
+            echo "valeur=${{ inputs.qualite }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "valeur=ql" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Rendu Manim
+        run: |
+          manim -${{ steps.qualite.outputs.valeur }} -a scenes/${{ matrix.chapitre }}.py \
+            --media_dir media/${{ matrix.chapitre }}
+
+      - name: Vérifier l'audio (correctif 7 — pas de -c copy plus tard)
+        run: |
+          find media/${{ matrix.chapitre }} -name "*.mp4" -exec sh -c '
+            ffprobe -v error -show_entries stream=codec_type -of csv=p=0 "$1"
+          ' _ {} \;
+
+      - name: Upload des vidéos rendues
+        uses: actions/upload-artifact@v4
+        with:
+          name: rendu-${{ matrix.chapitre }}
+          path: media/${{ matrix.chapitre }}/videos/**/*.mp4
+          retention-days: 14
+
+  # ---------------------------------------------------------------------
+  # JOB 3 — Assemblage, écriture dans Serie/Matiere/ (à côté du PDF
+  # source), commit dans le dépôt, puis publication en GitHub Release.
+  # UNIQUEMENT pour un tag de chapitre terminé (jamais un smoke-test).
+  # ---------------------------------------------------------------------
+  assemble-et-publier:
+    needs: [detect-scenes, render]
+    if: >
+      github.repository == 'ibif/video_cours' &&
+      needs.detect-scenes.outputs.mode == 'rendu-hd-final'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # nécessaire pour committer la vidéo + publier une Release
+    steps:
+      - name: Checkout de main (nécessaire pour committer la vidéo)
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/download-artifact@v4
+        with:
+          path: rendus/
+
+      - name: Installer ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+
+      - name: Assembler le chapitre (ré-encodage complet, jamais -c copy)
+        run: |
+          mkdir -p chapitres
+          nom="${{ needs.detect-scenes.outputs.chapitre_nom }}"
+          find rendus/ -name "*.mp4" | sort > liste_brute.txt
+          sed "s/^/file '/;s/$/'/" liste_brute.txt > liste.txt
+          ffmpeg -y -f concat -safe 0 -i liste.txt \
+            -c:v libx264 -crf 18 -preset medium -c:a aac -b:a 192k \
+            "chapitres/Chapitre_${nom}.mp4"
+
+      - name: Écrire la vidéo dans Serie/Matiere/ (à côté du PDF source)
+        run: |
+          serie="${{ needs.detect-scenes.outputs.serie }}"
+          matiere="${{ needs.detect-scenes.outputs.matiere }}"
+          nom="${{ needs.detect-scenes.outputs.chapitre_nom }}"
+
+          if [[ ! -f "${serie}/${matiere}.pdf" ]]; then
+            echo "::error::Aucun PDF trouvé à '${serie}/${matiere}.pdf'. Le nom" \
+                 "de matière dans le tag doit être identique au nom du PDF" \
+                 "source (voir CLAUDE.md)."
+            exit 1
+          fi
+
+          mkdir -p "${serie}/${matiere}"
+          cp "chapitres/Chapitre_${nom}.mp4" "${serie}/${matiere}/Chapitre_${nom}.mp4"
+
+      - name: Committer la vidéo dans le dépôt (avec retry en cas de push concurrent)
+        run: |
+          serie="${{ needs.detect-scenes.outputs.serie }}"
+          matiere="${{ needs.detect-scenes.outputs.matiere }}"
+          nom="${{ needs.detect-scenes.outputs.chapitre_nom }}"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add "${serie}/${matiere}/Chapitre_${nom}.mp4"
+          git commit -m "Vidéo rendue : ${serie}/${matiere} — Chapitre ${nom}" || {
+            echo "Rien à committer (vidéo déjà à jour)"; exit 0;
+          }
+
+          for tentative in 1 2 3 4 5; do
+            if git push origin HEAD:main; then
+              break
+            fi
+            echo "Push refusé (commit concurrent probable), nouvelle tentative $tentative..."
+            git fetch origin main
+            git rebase origin/main
+          done
+
+      - name: Publier en GitHub Release (lien de téléchargement permanent)
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: "${{ needs.detect-scenes.outputs.serie }}/${{ needs.detect-scenes.outputs.matiere }} — Chapitre ${{ needs.detect-scenes.outputs.chapitre_nom }}"
+          files: chapitres/*.mp4
+          body: |
+            Rendu HD automatique généré par le pipeline autonome (voir
+            CLAUDE.md, section "Pipeline autonome").
+            Vidéo également committée dans le dépôt :
+            `${{ needs.detect-scenes.outputs.serie }}/${{ needs.detect-scenes.outputs.matiere }}/Chapitre_${{ needs.detect-scenes.outputs.chapitre_nom }}.mp4`
