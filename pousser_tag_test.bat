@@ -71,7 +71,11 @@ if errorlevel 1 (
 )
 
 echo [ETAPE] git checkout %BRANCH% ...
-git checkout %BRANCH%
+REM -f : ce script se trouve souvent lui-meme, non suivi par git, dans
+REM le dossier du depot au moment ou il est lance (telecharge puis
+REM double-clique directement dedans) ; comme il est aussi commite
+REM dans la branche, un checkout normal refuserait de l'ecraser.
+git checkout -f %BRANCH%
 if errorlevel 1 (
     echo [ERREUR] echec du checkout.
     pause
