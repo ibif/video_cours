@@ -202,6 +202,54 @@ reproduire.
     ce n'est pas un bug de code, seulement un besoin de garder la machine
     éveillée pendant les rendus longs.
 
+12. **Nom de classe Scene avec accent (é, à, î...)** → un nom de classe
+    Python peut légalement contenir des accents et Manim le rend sans
+    problème, MAIS tout script bash qui reconstruit la liste des scènes
+    par regex ASCII (`[A-Za-z0-9_]+`) va tronquer silencieusement ce nom
+    (ex: `ReprésentationGraphiqueSuite` → `Repr`), pointer vers un fichier
+    `.mp4` inexistant, et faire échouer le concat ffmpeg **sans erreur
+    fatale visible** (le concat s'arrête net après les scènes précédentes
+    et produit une vidéo tronquée avec un exit code 0). Deux garde-fous :
+    interdire les accents dans les noms de classe Scene par convention
+    (voir Conventions de code), ET après chaque assemblage, vérifier que
+    la durée du fichier combiné correspond à la somme des durées des
+    scènes individuelles (voir Pipeline, étape 6).
+
+13. **Cache JSON partagé de `manim_voiceover` corrompu** →
+    `media/voiceovers/cache.json` est un fichier **unique, partagé par
+    toutes les scènes de tous les chapitres**, sans verrou ni écriture
+    atomique. Deux process manim qui y écrivent en même temps (rendu
+    parallèle) peuvent le tronquer, provoquant un `JSONDecodeError` /
+    `ValueError: Voiceover cache must be a JSON list`. Pire : une fois
+    corrompu, le fichier reste invalide pour **tous les rendus suivants,
+    même solo**, jusqu'à ce qu'un process le réécrive intégralement avec
+    succès. Si un rendu solo échoue avec cette erreur alors qu'aucun autre
+    process ne tournait, vérifier l'état du fichier :
+    ```python
+    import json
+    json.load(open("media/voiceovers/cache.json", encoding="utf-8"))
+    ```
+    Une simple relance du chapitre suffit en général (le fichier se
+    régénère). C'est la raison principale pour laquelle ce projet a
+    abandonné le rendu parallèle en cours de route sur le livre Physique.
+
+14. **`MemoryError` pendant `get_hash_from_play_call` (cache Manim)** →
+    erreur rencontrée sur un `self.wait()` parfaitement ordinaire, sans
+    rapport avec le contenu de la scène. Semble être un aléa ponctuel du
+    système (pas nécessairement une vraie saturation mémoire — 14 Go
+    libres sur 33 Go au moment de l'incident). Correctif : relancer le
+    chapitre, sans modifier le code.
+
+15. **Plantage dvisvgm intermittent et non reproductible sur formule
+    LaTeX standard** → `ValueError: Your installation does not support
+    converting .dvi files to SVG` peut survenir sur une formule tout à
+    fait ordinaire (`\Delta E_c = ...`), y compris en rendu solo sans
+    aucune contention. Rencontré à plusieurs reprises sur deux livres
+    différents, toujours résolu par une simple relance (la même scène
+    passe sans problème au deuxième ou troisième essai). Ne pas chercher
+    à réécrire la formule : c'est un aléa du toolchain MiKTeX/dvisvgm, pas
+    un bug de contenu.
+
 ## Pipeline de travail (ordre à respecter)
 1. Palette de couleurs sémantiques de contenu (définition, théorème,
    propriété, exemple, méthode, remarque, exercice, corrigé, essentiel) →
@@ -233,7 +281,13 @@ reproduire.
      voir correctif 7, baisser vers `-preset veryfast` si besoin) : ne pas
      dépasser 3 process simultanés, et toujours confirmer avec
      l'utilisateur avant de dépasser le mode solo puisque cela reste une
-     dérogation à la règle par défaut, pas la norme.
+     dérogation à la règle par défaut, pas la norme. **Risque
+     supplémentaire propre au parallélisme local avec voix off** : le
+     cache `manim_voiceover` (`media/voiceovers/cache.json`) est un
+     fichier unique partagé, non verrouillé — voir correctif 13. Un simple
+     rendu en parallèle a suffi à le corrompre sur ce projet ; en cas
+     d'erreur JSON sur ce fichier (même en solo par la suite), relancer le
+     chapitre concerné.
    - **En cloud** (voie normale désormais, voir « Pipeline autonome »
      ci-dessous) : la contention CPU ne s'applique plus, chaque chapitre
      tournant sur sa propre VM isolée — le parallélisme y est la norme, pas
@@ -245,7 +299,14 @@ reproduire.
    ffmpeg -i chapters/Chapitre_NN.mp4 -af volumedetect -f null - 2>&1 | grep mean_volume
    ```
    (présence de flux `h264`+`aac`, et `mean_volume` nettement au-dessus du
-   silence, typiquement autour de -20 à -30 dB).
+   silence, typiquement autour de -20 à -30 dB). **Vérifier aussi que la
+   durée totale du fichier combiné correspond à la somme des durées des
+   scènes individuelles** (voir correctif 12 — un concat silencieusement
+   tronqué a un exit code 0 et des flux valides, seule la durée le trahit) :
+   ```bash
+   ffprobe -show_entries format=duration -of default=nw=1:nk=1 chapters/Chapitre_NN.mp4
+   # à comparer à la somme des durées de chaque media/videos/.../*.mp4
+   ```
 
 ## Exécution cloud (GitHub Actions)
 
