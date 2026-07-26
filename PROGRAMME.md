@@ -38,6 +38,53 @@ la lecture intégrale de ses pages dans le PDF.
 
 ---
 
+## 1ereC — SVT (`1ereC/SVT.pdf`, 134 pages, 11 chapitres)
+
+⚠️ **Piège de nommage à connaître** : `1ereC/SVT.pdf` et `1ereD/SVT.pdf`
+partagent le même nom de `<Matiere>` (`SVT`). Or le pipeline
+(`.github/scripts/detect_scenes.py`) résout les scènes d'un chapitre par le
+motif `scenes/<Matiere>_<NomChapitre>_*.py`, **sans jamais tenir compte de
+la `<Serie>`**. Si un chapitre de 1ereC portait le même `NomChapitre`
+qu'un chapitre de 1ereD (ex : réutiliser `DivisionMeiotique` ou
+`EchangesIonsSol` tels quels), les deux tags
+`chapitre__1ereC__SVT__X` et `chapitre__1ereD__SVT__X` cibleraient
+**les mêmes fichiers de scènes** — collision silencieuse. C'est pourquoi
+tous les `NomChapitre` ci-dessous ont été choisis **explicitement
+distincts** de ceux déjà utilisés en 1ereD/SVT (voir tableau plus haut),
+même quand le thème se recoupe (méiose, gamétogénèse, synthèse des
+protéines, échanges d'ions du sol, mouvements des plaques...). Toute
+future écriture de chapitre SVT (1ereC ou 1ereD) doit vérifier l'ensemble
+des deux tableaux de ce fichier avant de choisir un nouveau `NomChapitre`.
+
+| # | Titre officiel | NomChapitre | Sous-sections | Statut |
+|---|---|---|---|---|
+| 1 | Le rôle et la structure des gonades des mammifères | `RoleGonadesMammiferes` | I. Introduction : le contexte de la reproduction · II. Les appareils reproducteurs · III. Le rôle des gonades · IV. Structure et ultrastructure des gonades · V. Tableau de synthèse comparatif · VI. Méthodes et astuces | à faire |
+| 2 | La division méiotique | `MeioseChromosomes` | I. Définition et intérêt de la méiose · II. Rappels sur les chromosomes · III. Le déroulement de la méiose (deux divisions successives) · IV. Le brassage génétique au cours de la méiose · V. Comparaison entre la méiose et la mitose · VI. Conséquences de la méiose · VII. Les anomalies de la méiose : l'exemple de la trisomie 21 | à faire |
+| 3 | La gamétogénèse chez les mammifères | `GametogeneseMammiferes` | I. Définition et cadre général de la gamétogénèse · II. La spermatogenèse : formation des spermatozoïdes · III. L'ovogenèse : formation des ovules · IV. Comparaison des deux processus (tableau de synthèse) · V. La structure des gamètes · VI. Les notions de fécondité | à faire |
+| 4 | La fécondation chez les mammifères | `FecondationMammiferes` | 1. Définition et lieu de la fécondation · 2. Le trajet des gamètes (spermatozoïdes, ovule) · 3. Les étapes de la fécondation (capacitation, réaction acrosomique, franchissement des enveloppes, blocage de la polyspermie, amphimixie) · 4. Les conséquences de la fécondation : diploïdie et détermination du sexe · 5. Les premières étapes du développement : segmentation et nidation · 6. Les jumeaux (vrais/faux) · 7. La maîtrise de la fécondation : contraception, IVG, FIVETE | à faire |
+| 5 | La synthèse des protéines | `ExpressionGenetique` | I. Rappels sur l'ADN, support de l'information génétique · II. Gène et protéine : le dogme central de la biologie moléculaire · III. La transcription : de l'ADN à l'ARN messager · IV. Le code génétique · V. La traduction : de l'ARNm à la protéine · VI. De la séquence nucléotidique à la séquence en acides aminés · VII. Les mutations et leurs conséquences : l'exemple de la drépanocytose | à faire |
+| 6 | La transmission d'un caractère héréditaire | `HerediteMendelienne` | I. Les notions de base de la génétique · II. Dominance, récessivité, homozygotie et hétérozygotie · III. Le monohybridisme : les croisements de Mendel sur le pois · IV. L'échiquier de croisement et les proportions théoriques · V. Le test-cross (croisement test) · VI. Exemples de transmission chez l'Homme et d'autres espèces · VII. Transmission autosomique et transmission liée au sexe · VIII. Les arbres généalogiques · IX. Applications : conseil génétique et sélection agricole | à faire |
+| 7 | La structure interne du globe terrestre | `StructureInterneGlobe` | I. Comment explorer l'intérieur de la Terre ? · II. Les ondes sismiques : nature, vitesses, réflexion et réfraction · III. Les discontinuités majeures : Moho, Gutenberg et Lehmann · IV. Les enveloppes du globe : croûte, manteau, noyau · V. Lithosphère et asthénosphère : un découpage mécanique · VI. Densité, pression et température internes | à faire |
+| 8 | Les mouvements des plaques lithosphériques | `TectoniquePlaques` | I. Le découpage de la lithosphère en plaques · II. Les arguments de la dérive des continents (Wegener, 1912) · III. Les arguments de l'expansion océanique · IV. Les trois types de frontières de plaques · V. Les moteurs des mouvements des plaques · VI. Conséquences : la répartition des séismes et des volcans | à faire |
+| 9 | Les échanges d'ions au niveau du sol | `EchangesCationiquesSol` | I. Rappels sur les ions et le sol · II. Les échanges cationiques : adsorption et désorption des ions · III. La capacité d'échange cationique (CEC) et la saturation du complexe · IV. Le pH du sol et la disponibilité des éléments nutritifs · V. Le lessivage et les pertes d'éléments fertilisants · VI. Les engrais, les amendements et le chaulage · VII. Application : les sols agricoles en Côte d'Ivoire | à faire |
+| 10 | La photosynthèse | `Photosynthese` | 1. Définition et équation bilan de la photosynthèse · 2. Le site de la photosynthèse : le chloroplaste et ses pigments · 3. La phase photochimique (phase claire) · 4. La phase biochimique (phase sombre) : le cycle de Calvin · 5. Mise en évidence expérimentale de la photosynthèse (dégagement d'O₂, test à l'eau iodée, témoins) · 6. Les facteurs influençant la photosynthèse (lumière, CO₂, température) · 7. Rôle de la photosynthèse dans la production de matière et l'équilibre du monde vivant | à faire |
+| 11 | L'écosystème naturel et l'écosystème agro-industriel | `EcosystemeAgroIndustriel` | 1. Définitions fondamentales : écosystème, biotope, biocénose, station · 2. Quelques écosystèmes naturels : la forêt, la savane, l'étang · 3. Les relations trophiques : chaînes et réseaux alimentaires · 4. Les flux de matière et d'énergie dans un écosystème · 5. Les cycles biogéochimiques : carbone et azote · 6. L'équilibre dynamique des écosystèmes · 7. L'écosystème agro-industriel (l'agrosystème) | à faire |
+
+Convention de nommage des scènes pour cette matière :
+`SVT_<NomChapitre>_NN.py` (ex : `SVT_RoleGonadesMammiferes_01.py`).
+Tag de rendu HD par chapitre : `chapitre__1ereC__SVT__<NomChapitre>`.
+
+Le découpage précis en scènes (une scène par notion, jamais fourre-tout —
+voir CLAUDE.md) est affiné au moment d'écrire chaque chapitre, à partir de
+la lecture intégrale de ses pages dans le PDF.
+
+Page 2 du PDF (`couleur.pdf` intégré) vérifiée : le code couleur des 9
+catégories de contenu est identique à celui déjà mesuré et intégré dans
+`constants.py`/`shapes/boxes.py` — pas de duplication de `constants.py`
+nécessaire pour cette série.
+
+---
+
 ## Autres matières/séries — à découper
 
 Sommaire à extraire depuis le PDF source correspondant avant d'écrire la
@@ -46,6 +93,5 @@ moindre scène (voir CLAUDE.md, section "Pipeline de travail").
 - `1ereC/Maths.pdf` (211 pages)
 - `1ereC/Physique.pdf` (141 pages)
 - `1ereC/Chimie.pdf` (153 pages)
-- `1ereC/SVT.pdf` (134 pages)
 - `1ereD/Maths.pdf` (196 pages)
 - `1ereD/Physique-Chimie.pdf` (293 pages)
