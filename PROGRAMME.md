@@ -85,13 +85,91 @@ nécessaire pour cette série.
 
 ---
 
+## 1ereC — Chimie (`1ereC/Chimie.pdf`, 153 pages, 15 chapitres)
+
+Page 2 du PDF vérifiée : code couleur des 9 catégories de contenu identique
+à celui déjà intégré dans `constants.py`/`shapes/boxes.py` (mêmes 8
+catégories + « L'ESSENTIEL À RETENIR »). Pas de collision de nom de
+matière à craindre : `1ereD` n'a pas de `Chimie.pdf` séparé (il a
+`Physique-Chimie.pdf`, préfixe de scène différent `Physique-Chimie_...`).
+
+| # | Titre officiel | NomChapitre | Sous-sections | Statut |
+|---|---|---|---|---|
+| 1 | Généralités sur les composés organiques | `GeneralitesComposesOrganiques` | 1. La chimie organique et les composés organiques · 2. Analyse élémentaire qualitative · 3. Analyse élémentaire quantitative · 4. Les différentes écritures d'une molécule organique · 5. Les chaînes carbonées · 6. L'isomérie · 7. Les principales fonctions organiques (aperçu) · 8. Bases de la nomenclature | fait |
+| 2 | Hydrocarbures saturés — les alcanes | `Alcanes` | 1. Généralités : liaison covalente, valence et formule générale des alcanes · 2. Structure des alcanes · 3. Nomenclature des alcanes (règles UICPA) · 4. Les cyclanes (cycloalcanes) · 5. Isomérie de chaîne · 6. Propriétés physiques des alcanes · 7. Propriétés chimiques des alcanes : combustion et substitution · 8. Pouvoir calorifique et usages des alcanes | fait |
+| 3 | Hydrocarbures insaturés — les alcènes et les alcynes | `AlcenesAlcynes` | 1. Structure et nomenclature des alcènes (molécule d'éthylène, formule générale, nomenclature, isomérie de position et stéréoisomérie Z/E) · 2. Structure et nomenclature des alcynes (acétylène, formule générale, nomenclature) · 3. Propriétés chimiques des alcènes/alcynes (combustion, additions, test à l'eau de brome) · 4. Réactions de polymérisation d'addition (monomère/polymère/motif/degré, polyéthylène/PVC/polystyrène, importance industrielle) | fait |
+| 4 | Le benzène | `Benzene` | 1. Introduction et formule brute du benzène · 2. Structure de la molécule de benzène · 3. Propriétés physiques du benzène · 4. Propriétés chimiques : réactions de substitution électrophile · 5. Comparaison du benzène avec les alcènes · 6. Usages et toxicité du benzène | fait |
+| 5 | Pétrole et gaz naturels | `PetroleGazNaturels` | 1. Origine du pétrole et des gaz naturels · 2. Composition du pétrole brut et des gaz naturels · 3. Le raffinage : distillation fractionnée et principales fractions · 4. Le craquage et le reformage — l'indice d'octane · 5. Importance économique : le pétrole en Côte d'Ivoire · 6. Les enjeux environnementaux | fait |
+| 6 | Quelques composés oxygénés | `ComposesOxygenes` | 1. Les alcools : définition, classes, nomenclature, propriétés · 2. Les phénols (simple mention) · 3. Les aldéhydes et les cétones : le groupe carbonyle · 4. Les acides carboxyliques : le groupe carboxyle, acidité faible · 5. Les esters : groupe fonctionnel, odeurs fruitées · 6. L'oxydation ménagée des alcools · 7. Les tests de reconnaissance des composés oxygénés | fait |
+| 7 | L'éthanol | `Ethanol` | 1. Généralités : formule et classe de l'éthanol · 2. Obtention de l'éthanol · 3. Propriétés physiques de l'éthanol · 4. Propriétés chimiques de l'éthanol · 5. Le degré alcoolique d'une boisson · 6. Tests de reconnaissance des alcools · 7. Usages de l'éthanol et dangers de l'alcoolisme | fait |
+| 8 | Estérification et hydrolyse d'un ester | `EsterificationHydrolyse` | 1. Les esters : structure, nomenclature et occurrence · 2. La réaction d'estérification : équation générale · 3. Caractéristiques de l'estérification : lente, athermique, limitée · 4. Catalyse par les ions H⁺ ; rôle de l'acide sulfurique · 5. L'équilibre estérification-hydrolyse : limite de réaction et taux d'avancement · 6. Comment augmenter le rendement d'une estérification ? · 7. L'hydrolyse des esters · 8. Aperçu de la saponification : hydrolyse basique et savons · 9. Usages des esters : arômes, parfums, fibres | fait |
+| 9 | Réactions d'oxydoréduction en solution aqueuse | `OxydoreductionSolutionAqueuse` | 1. Oxydation, réduction, oxydant, réducteur : définitions fondamentales · 2. Les couples oxydant/réducteur (couples redox) · 3. Les demi-équations électroniques · 4. Méthode d'équilibrage des demi-équations en milieu acide · 5. Équation bilan d'une réaction d'oxydoréduction · 6. Étude de quelques couples usuels · 7. Réaction entre deux couples : sens spontané (approche expérimentale) | fait |
+| 10 | Classification qualitative des couples oxydant/réducteur | `ClassificationQualitativeRedox` | 1. Force des oxydants et des réducteurs : expériences, observations, interprétation, conclusion · 2. Construction expérimentale d'une classification qualitative (couples redox métalliques, action des acides sur les métaux, place du couple H₃O⁺/H₂) · 3. Règle du gamma : sens de la réaction spontanée, prévision des réactions possibles · 4. Applications : métallurgie, protection des métaux, récupération des métaux | fait |
+| 11 | Classification quantitative des couples oxydant/réducteur | `ClassificationQuantitativeRedox` | 1. Rappels : de la classification qualitative à la nécessité d'un critère quantitatif · 2. La pile Daniell : point de départ expérimental · 3. L'électrode normale à hydrogène (ENH) : la référence des potentiels · 4. Le potentiel standard d'oxydoréduction E° et l'échelle des E° · 5. Signification des valeurs de E° : force des oxydants et des réducteurs · 6. Prévision quantitative des réactions d'oxydoréduction · 7. Comparaison avec la règle du gamma · 8. Tableau récapitulatif des potentiels standard usuels | fait |
+| 12 | Couples oxydant/réducteur en solution aqueuse — dosages d'oxydoréduction | `DosagesOxydoreduction` | 1. Généralités sur les dosages d'oxydoréduction : but, principe du dosage direct, équivalence et son repérage · 2. La manganimétrie : dosage par le permanganate de potassium · 3. L'iodométrie : dosages mettant en jeu le diiode et l'ion thiosulfate · 4. Relation générale à l'équivalence : formulation stœchiométrique et électronique · 5. Applications : concentration, titre de l'eau oxygénée « en volumes », degré chlorométrique de l'eau de Javel, dosage en retour · 6. Rigueur expérimentale : verrerie, rinçage, goutte à goutte | fait |
+| 13 | Oxydoréduction par voie sèche | `OxydoreductionVoieSeche` | 1. Généralisation de la notion d'oxydoréduction : les réactions par voie sèche · 2. Le nombre d'oxydation : définition et règles de calcul · 3. Variation du nombre d'oxydation au cours d'une réaction · 4. Exemples de réactions par voie sèche (combustion des métaux dans O₂, réduction des oxydes métalliques : aluminothermie, réduction de CuO par H₂ ou par le carbone) · 5. Applications métallurgiques : sidérurgie et obtention des métaux | fait |
+| 14 | Électrolyse | `Electrolyse` | 1. Le phénomène d'électrolyse : expérience de découverte, définition, montage, sens des porteurs de charge, réactions aux électrodes · 2. Électrolyses à électrodes inertes (acide sulfurique, chlorure de sodium, sulfate de cuivre) · 3. Électrolyse à électrode soluble (anode attaquable) : cas de CuSO₄ avec anode de cuivre, raffinage du cuivre · 4. Aspect quantitatif de l'électrolyse : quantité d'électricité Q=I×t, lien avec la quantité de matière déposée · 5. Applications industrielles de l'électrolyse | fait |
+| 15 | Corrosion et protection des métaux | `CorrosionProtectionMetaux` | 1. La corrosion : un phénomène d'oxydoréduction · 2. Conditions de la corrosion du fer : les expériences témoins · 3. Nature de la rouille · 4. Mécanisme simplifié de la corrosion humide · 5. Les moyens de protection des métaux · 6. Coût économique et enjeux pour les infrastructures | fait |
+
+Convention de nommage des scènes pour cette matière :
+`Chimie_<NomChapitre>_NN.py` (ex : `Chimie_GeneralitesComposesOrganiques_01.py`).
+Tag de rendu HD par chapitre : `chapitre__1ereC__Chimie__<NomChapitre>`.
+
+Le découpage précis en scènes (une scène par notion, jamais fourre-tout —
+voir CLAUDE.md) est affiné au moment d'écrire chaque chapitre, à partir de
+la lecture intégrale de ses pages dans le PDF.
+
+---
+
+## 1ereC — Maths (`1ereC/Maths.pdf`, 211 pages, 17 chapitres)
+
+Page 2 du PDF vérifiée : code couleur des 9 catégories de contenu identique
+à celui déjà intégré dans `constants.py`/`shapes/boxes.py` (DÉFINITION,
+THÉORÈME, PROPRIÉTÉ, EXEMPLE, MÉTHODE, REMARQUE, EXERCICE, CORRIGÉ,
+L'ESSENTIEL À RETENIR). Pas de collision de nom de matière à craindre avec
+`1ereD/Maths.pdf` : les deux PDF partagent le même nom de matière
+(`Maths`), donc les `NomChapitre` de cette série et de `1ereD` devront
+rester distincts lors du découpage de `1ereD/Maths.pdf` (à faire plus
+tard) pour éviter toute collision de motif de fichiers de scènes.
+
+| # | Titre officiel | NomChapitre | Sous-sections | Statut |
+|---|---|---|---|---|
+| 1 | Équations et inéquations du second degré dans ℝ | `EquationsInequationsSecondDegre` | 1. Équations du second degré : forme canonique, discriminant, résolution, factorisation, somme et produit des racines · 2. Signe du trinôme et inéquations du second degré · 3. Équations et inéquations se ramenant au second degré : bicarrées, avec valeurs absolues, irrationnelles · 4. Problèmes de mise en équation | fait |
+| 2 | Angles orientés et trigonométrie | `AnglesOrientesTrigonometrie` | 1. Cercle trigonométrique et radian · 2. Angle orienté de deux vecteurs · 3. Lignes trigonométriques · 4. Formules de trigonométrie · 5. Équations trigonométriques · 6. Inéquations trigonométriques simples | à faire |
+| 3 | Généralités sur les fonctions | `GeneralitesFonctions` | 1. Ensemble de définition — image d'un élément · 2. Parité : fonctions paires, fonctions impaires · 3. Périodicité · 4. Sens de variation · 5. Extremums — majorant, minorant · 6. Composition de fonctions · 7. Restriction et prolongement d'une fonction · 8. Bijection et fonction réciproque · 9. Fonctions associées et leurs courbes | fait |
+| 4 | Barycentre | `Barycentre` | 1. Barycentre de deux points pondérés : existence et unicité, homogénéité, position, réduction de vecteurs, coordonnées · 2. Barycentre de trois points pondérés : isobarycentre, réduction, coordonnées, associativité (barycentres partiels) · 3. Applications : alignement, concours de droites, lignes de niveau et lieux géométriques, centre de gravité | fait |
+| 5 | Limites et continuité | `LimitesContinuite` | 1. Notion de limite : en +∞/−∞, en un point, à gauche/à droite, limites des fonctions élémentaires · 2. Opérations sur les limites et formes indéterminées · 3. Limites et comparaison : théorème des gendarmes, limites trigonométriques de référence · 4. Continuité en un point, sur un intervalle, prolongement par continuité · 5. Théorème des valeurs intermédiaires | à faire |
+| 6 | Dénombrement | `Denombrement` | 1. Ensembles finis et cardinal : partition, principe additif, produit cartésien, principe multiplicatif · 2. Les p-listes (p-uplets) · 3. Arrangements et permutations : notation factorielle, anagrammes · 4. Combinaisons : coefficients binomiaux, triangle de Pascal, formule du binôme de Newton · 5. Modélisation des problèmes de dénombrement : les tirages | à faire |
+| 7 | Extension de la notion de limite | `ExtensionNotionLimite` | 1. Limite à gauche et limite à droite · 2. Limites de fonctions rationnelles et irrationnelles · 3. Asymptotes verticales et horizontales · 4. Asymptotes obliques · 5. Directions asymptotiques et branches infinies · 6. Position relative d'une courbe par rapport à son asymptote · 7. Application à l'étude de fonctions | à faire |
+| 8 | Composées de transformations du plan | `ComposeesTransformationsPlan` | 1. Rappels sur les transformations usuelles du plan · 2. Généralités sur la composée de deux transformations · 3. Composée de deux translations — de deux symétries centrales · 4. Composée de deux symétries axiales · 5. Composée de deux rotations · 6. Composée de deux homothéties · 7. Composée d'une homothétie et d'une translation · 8. Décomposition des transformations usuelles · 9. Applications : constructions et lieux géométriques | à faire |
+| 9 | Dérivation | `Derivation` | 1. Taux d'accroissement · 2. Nombre dérivé — dérivabilité en un point · 3. Tangente à une courbe et approximation affine · 4. Fonction dérivée — dérivées des fonctions usuelles · 5. Opérations sur les fonctions dérivables · 6. Dérivée de x↦f(ax+b) et de x↦√u(x) · 7. Signe de la dérivée et sens de variation · 8. Extremums locaux · 9. Dérivées successives | à faire |
+| 10 | Orthogonalité dans l'espace | `OrthogonaliteEspace` | 1. Droites orthogonales et droites perpendiculaires · 2. Droite et plan orthogonaux · 3. Projeté orthogonal — distance d'un point à un plan/à une droite · 4. Plans perpendiculaires · 5. Applications aux solides usuels | à faire |
+| 11 | Étude et représentation graphique d'une fonction | `EtudeGraphiqueFonctions` | 1. Le plan complet d'étude d'une fonction (les sept étapes) · 2. Étude des fonctions polynômes du 3e degré · 3. Étude des fonctions homographiques · 4. Fonctions rationnelles et asymptote oblique · 5. Étude des fonctions irrationnelles simples · 6. Étude des fonctions trigonométriques simples · 7. Intersections de courbes et lectures graphiques | à faire |
+| 12 | Probabilité | `Probabilite` | 1. Expériences aléatoires et événements : univers, opérations sur les événements · 2. Probabilité sur un ensemble fini : définition, propriétés, équiprobabilité, probabilités et dénombrement, arbres et tableaux à double entrée · 3. Variables aléatoires réelles : loi de probabilité, espérance, variance et écart-type, application aux jeux de hasard | à faire |
+| 13 | Systèmes d'équations linéaires dans ℝ² et ℝ³ | `SystemesEquationsLineaires` | 1. Systèmes de deux équations à deux inconnues : substitution, combinaison linéaire, déterminant et formules de Cramer, discussion, interprétation géométrique · 2. Déterminant d'ordre 3 : règle de Sarrus, propriétés · 3. Systèmes de trois équations à trois inconnues : substitution, pivot de Gauss, formules de Cramer, discussion, interprétation géométrique · 4. Mise en système de problèmes concrets | à faire |
+| 14 | Géométrie analytique du plan | `GeometrieAnalytiquePlan` | 1. Repère du plan et coordonnées de vecteurs · 2. Déterminant de deux vecteurs et colinéarité · 3. Équations de droites · 4. Distance d'un point à une droite · 5. Cercle : équations, intersections, tangentes | à faire |
+| 15 | Suites numériques | `SuitesNumeriques` | 1. Généralités sur les suites numériques · 2. Sens de variation — suites majorées, minorées, bornées · 3. Suites arithmétiques · 4. Suites géométriques · 5. Suites arithmético-géométriques · 6. Notions de limites de suites · 7. Résolution de problèmes contextualisés | à faire |
+| 16 | Vecteurs de l'espace | `VecteursEspace` | 1. Extension à l'espace de la notion de vecteur · 2. Vecteurs colinéaires et alignement · 3. Vecteurs coplanaires · 4. Bases et repères de l'espace · 5. Applications : parallélisme de droites et de plans, milieu d'un segment, centre de gravité d'un tétraèdre, sections de solides | à faire |
+| 17 | Statistique à une variable | `StatistiqueUneVariable` | 1. Vocabulaire et organisation des données : population, caractère, modalités, effectifs, fréquences, cumuls · 2. Regroupement en classes et représentations graphiques : histogramme, polygones · 3. Caractéristiques de position : mode, médiane, quartiles, moyenne · 4. Caractéristiques de dispersion : étendue, écart interquartile, écart moyen, variance, écart-type | à faire |
+
+Convention de nommage des scènes pour cette matière :
+`Maths_<NomChapitre>_NN.py` (ex : `Maths_EquationsInequationsSecondDegre_01.py`).
+Tag de rendu HD par chapitre : `chapitre__1ereC__Maths__<NomChapitre>`.
+**Attention** : un fichier `scenes/Maths_Test_01.py` préexiste (scène de
+test hors programme, PR #1/#2) — ne pas le supprimer ni le confondre avec
+un chapitre réel.
+
+Le découpage précis en scènes (une scène par notion, jamais fourre-tout —
+voir CLAUDE.md) est affiné au moment d'écrire chaque chapitre, à partir de
+la lecture intégrale de ses pages dans le PDF.
+
+---
+
 ## Autres matières/séries — à découper
 
 Sommaire à extraire depuis le PDF source correspondant avant d'écrire la
 moindre scène (voir CLAUDE.md, section "Pipeline de travail").
 
-- `1ereC/Maths.pdf` (211 pages)
 - `1ereC/Physique.pdf` (141 pages)
-- `1ereC/Chimie.pdf` (153 pages)
 - `1ereD/Maths.pdf` (196 pages)
 - `1ereD/Physique-Chimie.pdf` (293 pages)
