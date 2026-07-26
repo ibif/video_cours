@@ -121,12 +121,55 @@ la lecture intégrale de ses pages dans le PDF.
 
 ---
 
+## 1ereC — Maths (`1ereC/Maths.pdf`, 211 pages, 17 chapitres)
+
+Page 2 du PDF vérifiée : code couleur des 9 catégories de contenu identique
+à celui déjà intégré dans `constants.py`/`shapes/boxes.py` (DÉFINITION,
+THÉORÈME, PROPRIÉTÉ, EXEMPLE, MÉTHODE, REMARQUE, EXERCICE, CORRIGÉ,
+L'ESSENTIEL À RETENIR). Pas de collision de nom de matière à craindre avec
+`1ereD/Maths.pdf` : les deux PDF partagent le même nom de matière
+(`Maths`), donc les `NomChapitre` de cette série et de `1ereD` devront
+rester distincts lors du découpage de `1ereD/Maths.pdf` (à faire plus
+tard) pour éviter toute collision de motif de fichiers de scènes.
+
+| # | Titre officiel | NomChapitre | Sous-sections | Statut |
+|---|---|---|---|---|
+| 1 | Équations et inéquations du second degré dans ℝ | `EquationsInequationsSecondDegre` | 1. Équations du second degré : forme canonique, discriminant, résolution, factorisation, somme et produit des racines · 2. Signe du trinôme et inéquations du second degré · 3. Équations et inéquations se ramenant au second degré : bicarrées, avec valeurs absolues, irrationnelles · 4. Problèmes de mise en équation | fait |
+| 2 | Angles orientés et trigonométrie | `AnglesOrientesTrigonometrie` | 1. Cercle trigonométrique et radian · 2. Angle orienté de deux vecteurs · 3. Lignes trigonométriques · 4. Formules de trigonométrie · 5. Équations trigonométriques · 6. Inéquations trigonométriques simples | à faire |
+| 3 | Généralités sur les fonctions | `GeneralitesFonctions` | 1. Ensemble de définition — image d'un élément · 2. Parité : fonctions paires, fonctions impaires · 3. Périodicité · 4. Sens de variation · 5. Extremums — majorant, minorant · 6. Composition de fonctions · 7. Restriction et prolongement d'une fonction · 8. Bijection et fonction réciproque · 9. Fonctions associées et leurs courbes | fait |
+| 4 | Barycentre | `Barycentre` | 1. Barycentre de deux points pondérés : existence et unicité, homogénéité, position, réduction de vecteurs, coordonnées · 2. Barycentre de trois points pondérés : isobarycentre, réduction, coordonnées, associativité (barycentres partiels) · 3. Applications : alignement, concours de droites, lignes de niveau et lieux géométriques, centre de gravité | fait |
+| 5 | Limites et continuité | `LimitesContinuite` | 1. Notion de limite : en +∞/−∞, en un point, à gauche/à droite, limites des fonctions élémentaires · 2. Opérations sur les limites et formes indéterminées · 3. Limites et comparaison : théorème des gendarmes, limites trigonométriques de référence · 4. Continuité en un point, sur un intervalle, prolongement par continuité · 5. Théorème des valeurs intermédiaires | à faire |
+| 6 | Dénombrement | `Denombrement` | 1. Ensembles finis et cardinal : partition, principe additif, produit cartésien, principe multiplicatif · 2. Les p-listes (p-uplets) · 3. Arrangements et permutations : notation factorielle, anagrammes · 4. Combinaisons : coefficients binomiaux, triangle de Pascal, formule du binôme de Newton · 5. Modélisation des problèmes de dénombrement : les tirages | à faire |
+| 7 | Extension de la notion de limite | `ExtensionNotionLimite` | 1. Limite à gauche et limite à droite · 2. Limites de fonctions rationnelles et irrationnelles · 3. Asymptotes verticales et horizontales · 4. Asymptotes obliques · 5. Directions asymptotiques et branches infinies · 6. Position relative d'une courbe par rapport à son asymptote · 7. Application à l'étude de fonctions | à faire |
+| 8 | Composées de transformations du plan | `ComposeesTransformationsPlan` | 1. Rappels sur les transformations usuelles du plan · 2. Généralités sur la composée de deux transformations · 3. Composée de deux translations — de deux symétries centrales · 4. Composée de deux symétries axiales · 5. Composée de deux rotations · 6. Composée de deux homothéties · 7. Composée d'une homothétie et d'une translation · 8. Décomposition des transformations usuelles · 9. Applications : constructions et lieux géométriques | à faire |
+| 9 | Dérivation | `Derivation` | 1. Taux d'accroissement · 2. Nombre dérivé — dérivabilité en un point · 3. Tangente à une courbe et approximation affine · 4. Fonction dérivée — dérivées des fonctions usuelles · 5. Opérations sur les fonctions dérivables · 6. Dérivée de x↦f(ax+b) et de x↦√u(x) · 7. Signe de la dérivée et sens de variation · 8. Extremums locaux · 9. Dérivées successives | à faire |
+| 10 | Orthogonalité dans l'espace | `OrthogonaliteEspace` | 1. Droites orthogonales et droites perpendiculaires · 2. Droite et plan orthogonaux · 3. Projeté orthogonal — distance d'un point à un plan/à une droite · 4. Plans perpendiculaires · 5. Applications aux solides usuels | à faire |
+| 11 | Étude et représentation graphique d'une fonction | `EtudeGraphiqueFonctions` | 1. Le plan complet d'étude d'une fonction (les sept étapes) · 2. Étude des fonctions polynômes du 3e degré · 3. Étude des fonctions homographiques · 4. Fonctions rationnelles et asymptote oblique · 5. Étude des fonctions irrationnelles simples · 6. Étude des fonctions trigonométriques simples · 7. Intersections de courbes et lectures graphiques | à faire |
+| 12 | Probabilité | `Probabilite` | 1. Expériences aléatoires et événements : univers, opérations sur les événements · 2. Probabilité sur un ensemble fini : définition, propriétés, équiprobabilité, probabilités et dénombrement, arbres et tableaux à double entrée · 3. Variables aléatoires réelles : loi de probabilité, espérance, variance et écart-type, application aux jeux de hasard | à faire |
+| 13 | Systèmes d'équations linéaires dans ℝ² et ℝ³ | `SystemesEquationsLineaires` | 1. Systèmes de deux équations à deux inconnues : substitution, combinaison linéaire, déterminant et formules de Cramer, discussion, interprétation géométrique · 2. Déterminant d'ordre 3 : règle de Sarrus, propriétés · 3. Systèmes de trois équations à trois inconnues : substitution, pivot de Gauss, formules de Cramer, discussion, interprétation géométrique · 4. Mise en système de problèmes concrets | à faire |
+| 14 | Géométrie analytique du plan | `GeometrieAnalytiquePlan` | 1. Repère du plan et coordonnées de vecteurs · 2. Déterminant de deux vecteurs et colinéarité · 3. Équations de droites · 4. Distance d'un point à une droite · 5. Cercle : équations, intersections, tangentes | à faire |
+| 15 | Suites numériques | `SuitesNumeriques` | 1. Généralités sur les suites numériques · 2. Sens de variation — suites majorées, minorées, bornées · 3. Suites arithmétiques · 4. Suites géométriques · 5. Suites arithmético-géométriques · 6. Notions de limites de suites · 7. Résolution de problèmes contextualisés | à faire |
+| 16 | Vecteurs de l'espace | `VecteursEspace` | 1. Extension à l'espace de la notion de vecteur · 2. Vecteurs colinéaires et alignement · 3. Vecteurs coplanaires · 4. Bases et repères de l'espace · 5. Applications : parallélisme de droites et de plans, milieu d'un segment, centre de gravité d'un tétraèdre, sections de solides | à faire |
+| 17 | Statistique à une variable | `StatistiqueUneVariable` | 1. Vocabulaire et organisation des données : population, caractère, modalités, effectifs, fréquences, cumuls · 2. Regroupement en classes et représentations graphiques : histogramme, polygones · 3. Caractéristiques de position : mode, médiane, quartiles, moyenne · 4. Caractéristiques de dispersion : étendue, écart interquartile, écart moyen, variance, écart-type | à faire |
+
+Convention de nommage des scènes pour cette matière :
+`Maths_<NomChapitre>_NN.py` (ex : `Maths_EquationsInequationsSecondDegre_01.py`).
+Tag de rendu HD par chapitre : `chapitre__1ereC__Maths__<NomChapitre>`.
+**Attention** : un fichier `scenes/Maths_Test_01.py` préexiste (scène de
+test hors programme, PR #1/#2) — ne pas le supprimer ni le confondre avec
+un chapitre réel.
+
+Le découpage précis en scènes (une scène par notion, jamais fourre-tout —
+voir CLAUDE.md) est affiné au moment d'écrire chaque chapitre, à partir de
+la lecture intégrale de ses pages dans le PDF.
+
+---
+
 ## Autres matières/séries — à découper
 
 Sommaire à extraire depuis le PDF source correspondant avant d'écrire la
 moindre scène (voir CLAUDE.md, section "Pipeline de travail").
 
-- `1ereC/Maths.pdf` (211 pages)
 - `1ereC/Physique.pdf` (141 pages)
 - `1ereD/Maths.pdf` (196 pages)
 - `1ereD/Physique-Chimie.pdf` (293 pages)
