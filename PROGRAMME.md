@@ -85,6 +85,42 @@ nécessaire pour cette série.
 
 ---
 
+## 1ereC — Chimie (`1ereC/Chimie.pdf`, 153 pages, 15 chapitres)
+
+Page 2 du PDF vérifiée : code couleur des 9 catégories de contenu identique
+à celui déjà intégré dans `constants.py`/`shapes/boxes.py` (mêmes 8
+catégories + « L'ESSENTIEL À RETENIR »). Pas de collision de nom de
+matière à craindre : `1ereD` n'a pas de `Chimie.pdf` séparé (il a
+`Physique-Chimie.pdf`, préfixe de scène différent `Physique-Chimie_...`).
+
+| # | Titre officiel | NomChapitre | Sous-sections | Statut |
+|---|---|---|---|---|
+| 1 | Généralités sur les composés organiques | `GeneralitesComposesOrganiques` | 1. La chimie organique et les composés organiques · 2. Analyse élémentaire qualitative · 3. Analyse élémentaire quantitative · 4. Les différentes écritures d'une molécule organique · 5. Les chaînes carbonées · 6. L'isomérie · 7. Les principales fonctions organiques (aperçu) · 8. Bases de la nomenclature | à faire |
+| 2 | Hydrocarbures saturés — les alcanes | `Alcanes` | 1. Généralités : liaison covalente, valence et formule générale des alcanes · 2. Structure des alcanes · 3. Nomenclature des alcanes (règles UICPA) · 4. Les cyclanes (cycloalcanes) · 5. Isomérie de chaîne · 6. Propriétés physiques des alcanes · 7. Propriétés chimiques des alcanes : combustion et substitution · 8. Pouvoir calorifique et usages des alcanes | à faire |
+| 3 | Hydrocarbures insaturés — les alcènes et les alcynes | `AlcenesAlcynes` | 1. Structure et nomenclature des alcènes (molécule d'éthylène, formule générale, nomenclature, isomérie de position et stéréoisomérie Z/E) · 2. Structure et nomenclature des alcynes (acétylène, formule générale, nomenclature) · 3. Propriétés chimiques des alcènes/alcynes (combustion, additions, test à l'eau de brome) · 4. Réactions de polymérisation d'addition (monomère/polymère/motif/degré, polyéthylène/PVC/polystyrène, importance industrielle) | à faire |
+| 4 | Le benzène | `Benzene` | 1. Introduction et formule brute du benzène · 2. Structure de la molécule de benzène · 3. Propriétés physiques du benzène · 4. Propriétés chimiques : réactions de substitution électrophile · 5. Comparaison du benzène avec les alcènes · 6. Usages et toxicité du benzène | à faire |
+| 5 | Pétrole et gaz naturels | `PetroleGazNaturels` | 1. Origine du pétrole et des gaz naturels · 2. Composition du pétrole brut et des gaz naturels · 3. Le raffinage : distillation fractionnée et principales fractions · 4. Le craquage et le reformage — l'indice d'octane · 5. Importance économique : le pétrole en Côte d'Ivoire · 6. Les enjeux environnementaux | à faire |
+| 6 | Quelques composés oxygénés | `ComposesOxygenes` | 1. Les alcools : définition, classes, nomenclature, propriétés · 2. Les phénols (simple mention) · 3. Les aldéhydes et les cétones : le groupe carbonyle · 4. Les acides carboxyliques : le groupe carboxyle, acidité faible · 5. Les esters : groupe fonctionnel, odeurs fruitées · 6. L'oxydation ménagée des alcools · 7. Les tests de reconnaissance des composés oxygénés | à faire |
+| 7 | L'éthanol | `Ethanol` | 1. Généralités : formule et classe de l'éthanol · 2. Obtention de l'éthanol · 3. Propriétés physiques de l'éthanol · 4. Propriétés chimiques de l'éthanol · 5. Le degré alcoolique d'une boisson · 6. Tests de reconnaissance des alcools · 7. Usages de l'éthanol et dangers de l'alcoolisme | à faire |
+| 8 | Estérification et hydrolyse d'un ester | `EsterificationHydrolyse` | 1. Les esters : structure, nomenclature et occurrence · 2. La réaction d'estérification : équation générale · 3. Caractéristiques de l'estérification : lente, athermique, limitée · 4. Catalyse par les ions H⁺ ; rôle de l'acide sulfurique · 5. L'équilibre estérification-hydrolyse : limite de réaction et taux d'avancement · 6. Comment augmenter le rendement d'une estérification ? · 7. L'hydrolyse des esters · 8. Aperçu de la saponification : hydrolyse basique et savons · 9. Usages des esters : arômes, parfums, fibres | à faire |
+| 9 | Réactions d'oxydoréduction en solution aqueuse | `OxydoreductionSolutionAqueuse` | 1. Oxydation, réduction, oxydant, réducteur : définitions fondamentales · 2. Les couples oxydant/réducteur (couples redox) · 3. Les demi-équations électroniques · 4. Méthode d'équilibrage des demi-équations en milieu acide · 5. Équation bilan d'une réaction d'oxydoréduction · 6. Étude de quelques couples usuels · 7. Réaction entre deux couples : sens spontané (approche expérimentale) | à faire |
+| 10 | Classification qualitative des couples oxydant/réducteur | `ClassificationQualitativeRedox` | 1. Force des oxydants et des réducteurs : expériences, observations, interprétation, conclusion · 2. Construction expérimentale d'une classification qualitative (couples redox métalliques, action des acides sur les métaux, place du couple H₃O⁺/H₂) · 3. Règle du gamma : sens de la réaction spontanée, prévision des réactions possibles · 4. Applications : métallurgie, protection des métaux, récupération des métaux | à faire |
+| 11 | Classification quantitative des couples oxydant/réducteur | `ClassificationQuantitativeRedox` | 1. Rappels : de la classification qualitative à la nécessité d'un critère quantitatif · 2. La pile Daniell : point de départ expérimental · 3. L'électrode normale à hydrogène (ENH) : la référence des potentiels · 4. Le potentiel standard d'oxydoréduction E° et l'échelle des E° · 5. Signification des valeurs de E° : force des oxydants et des réducteurs · 6. Prévision quantitative des réactions d'oxydoréduction · 7. Comparaison avec la règle du gamma · 8. Tableau récapitulatif des potentiels standard usuels | à faire |
+| 12 | Couples oxydant/réducteur en solution aqueuse — dosages d'oxydoréduction | `DosagesOxydoreduction` | 1. Généralités sur les dosages d'oxydoréduction : but, principe du dosage direct, équivalence et son repérage · 2. La manganimétrie : dosage par le permanganate de potassium · 3. L'iodométrie : dosages mettant en jeu le diiode et l'ion thiosulfate · 4. Relation générale à l'équivalence : formulation stœchiométrique et électronique · 5. Applications : concentration, titre de l'eau oxygénée « en volumes », degré chlorométrique de l'eau de Javel, dosage en retour · 6. Rigueur expérimentale : verrerie, rinçage, goutte à goutte | à faire |
+| 13 | Oxydoréduction par voie sèche | `OxydoreductionVoieSeche` | 1. Généralisation de la notion d'oxydoréduction : les réactions par voie sèche · 2. Le nombre d'oxydation : définition et règles de calcul · 3. Variation du nombre d'oxydation au cours d'une réaction · 4. Exemples de réactions par voie sèche (combustion des métaux dans O₂, réduction des oxydes métalliques : aluminothermie, réduction de CuO par H₂ ou par le carbone) · 5. Applications métallurgiques : sidérurgie et obtention des métaux | à faire |
+| 14 | Électrolyse | `Electrolyse` | 1. Le phénomène d'électrolyse : expérience de découverte, définition, montage, sens des porteurs de charge, réactions aux électrodes · 2. Électrolyses à électrodes inertes (acide sulfurique, chlorure de sodium, sulfate de cuivre) · 3. Électrolyse à électrode soluble (anode attaquable) : cas de CuSO₄ avec anode de cuivre, raffinage du cuivre · 4. Aspect quantitatif de l'électrolyse : quantité d'électricité Q=I×t, lien avec la quantité de matière déposée · 5. Applications industrielles de l'électrolyse | à faire |
+| 15 | Corrosion et protection des métaux | `CorrosionProtectionMetaux` | 1. La corrosion : un phénomène d'oxydoréduction · 2. Conditions de la corrosion du fer : les expériences témoins · 3. Nature de la rouille · 4. Mécanisme simplifié de la corrosion humide · 5. Les moyens de protection des métaux · 6. Coût économique et enjeux pour les infrastructures | à faire |
+
+Convention de nommage des scènes pour cette matière :
+`Chimie_<NomChapitre>_NN.py` (ex : `Chimie_GeneralitesComposesOrganiques_01.py`).
+Tag de rendu HD par chapitre : `chapitre__1ereC__Chimie__<NomChapitre>`.
+
+Le découpage précis en scènes (une scène par notion, jamais fourre-tout —
+voir CLAUDE.md) est affiné au moment d'écrire chaque chapitre, à partir de
+la lecture intégrale de ses pages dans le PDF.
+
+---
+
 ## Autres matières/séries — à découper
 
 Sommaire à extraire depuis le PDF source correspondant avant d'écrire la
@@ -92,6 +128,5 @@ moindre scène (voir CLAUDE.md, section "Pipeline de travail").
 
 - `1ereC/Maths.pdf` (211 pages)
 - `1ereC/Physique.pdf` (141 pages)
-- `1ereC/Chimie.pdf` (153 pages)
 - `1ereD/Maths.pdf` (196 pages)
 - `1ereD/Physique-Chimie.pdf` (293 pages)
