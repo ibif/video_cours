@@ -165,11 +165,38 @@ la lecture intégrale de ses pages dans le PDF.
 
 ---
 
+## 1ereC — Physique (`1ereC/Physique.pdf`, 141 pages, 13 chapitres)
+
+| # | Titre officiel | NomChapitre | Sous-sections | Statut |
+|---|---|---|---|---|
+| 1 | Travail et puissance dans le cas d'un mouvement de translation | `TravailPuissanceTranslation` | 1. Travail d'une force constante en translation : définition, expression, travail moteur/résistant/nul, déplacement quelconque · 2. Travail du poids : W=±mgh, indépendance du chemin suivi · 3. Travail d'une force de frottement : dépendance du chemin suivi · 4. Puissance d'une force constante : moyenne et instantanée P=F⃗·v⃗ · 5. Unités et rendement | à faire |
+| 2 | Travail et puissance dans le cas d'un mouvement de rotation autour d'un axe fixe | `TravailPuissanceRotation` | 1. Rappels sur le mouvement de rotation (abscisse angulaire, vitesse angulaire, vitesse linéaire) · 2. Moment d'une force par rapport à un axe fixe, règle du tire-bouchon · 3. Moment d'un couple de forces · 4. Travail d'une force de moment constant (W=ℳΔθ) · 5. Puissance en rotation (P=ℳω) · 6. Théorème des moments (équilibre) · 7. Applications : treuil, pédalier, machines simples | à faire |
+| 3 | Énergie cinétique | `EnergieCinetique` | 1. Énergie cinétique de translation (½mv²) · 2. Énergie cinétique de rotation (½J_Δω²) et moment d'inertie · 3. Moments d'inertie usuels (cerceau, cylindre, sphère, tige) · 4. Théorème de l'énergie cinétique (translation et rotation) · 5. Applications : freinage, chute libre, pendule simple | à faire |
+| 4 | Énergie potentielle | `EnergiePotentielle` | 1. Notion d'énergie potentielle · 2. Énergie potentielle de pesanteur (Epp=mgz+Cte), choix de la référence, variation ΔEpp=−W(poids) · 3. Énergie potentielle élastique (Epe=½kx²), travail de la tension d'un ressort · 4. Forces conservatives et énergie potentielle associée (approche qualitative) | à faire |
+| 5 | Énergie mécanique | `EnergieMecanique` | 1. Rappels (énergie cinétique, potentielle de pesanteur, potentielle élastique, théorème de l'énergie cinétique) · 2. Énergie mécanique Em=Ec+Ep · 3. Conservation de l'énergie mécanique (forces conservatives) · 4. Non-conservation (ΔEm=W(frottements)) · 5. Applications : chute libre, pendule simple, mouvement sur piste, transferts d'énergie | à faire |
+| 6 | Champ électrostatique | `ChampElectrostatique` | 1. Les charges électriques : électrisation, quantification, conducteurs/isolants · 2. Loi de Coulomb · 3. Champ électrostatique, vecteur champ créé par une charge ponctuelle, principe de superposition · 4. Lignes de champ (charge seule, dipôle) · 5. Champ uniforme entre armatures (E=U/d) · 6. Force subie par une charge dans un champ | à faire |
+| 7 | Énergie potentielle électrostatique | `EnergiePotentielleElectrostatique` | 1. Potentiel électrique et différence de potentiel · 2. Travail de la force électrostatique dans un champ uniforme, force conservative · 3. Relation champ-potentiel (U=E·d), surfaces équipotentielles · 4. Énergie potentielle électrostatique Ep=qV, électronvolt · 5. Applications : condensateur plan, accélération de particules | à faire |
+| 8 | Puissance et énergie électriques | `PuissanceEnergieElectriques` | 1. Rappels : courant, tension, dipôles, conventions · 2. Énergie et puissance électriques d'un dipôle (W=UIt, P=UI) · 3. Effet Joule et loi d'Ohm · 4. Bilan énergétique d'un générateur (E, r, rendement) · 5. Bilan énergétique d'un récepteur (E', r', rendement) · 6. Loi de Pouillet · 7. Kilowattheure et facturation de l'énergie électrique | à faire |
+| 9 | Le condensateur | `Condensateur` | 1. Constitution et symbole d'un condensateur · 2. Charge à courant constant (q=It, u=q/C) · 3. Capacité, le farad, condensateur plan · 4. Association de condensateurs (série/parallèle) · 5. Énergie emmagasinée (E=½Cu²) · 6. Charge/décharge à travers un résistor, constante de temps τ=RC · 7. Applications : flash, lissage | à faire |
+| 10 | L'amplificateur opérationnel | `AmplificateurOperationnel` | 1. Présentation de l'AO (bornes, alimentation, symbole) · 2. AO idéal : régimes linéaire et saturé (i+=i−=0, ε=0 en linéaire) · 3. Régime saturé : le comparateur · 4. Montages en régime linéaire : suiveur, inverseur, non inverseur (démonstrations des gains) · 5. Conditions de linéarité et applications | à faire |
+| 11 | Introduction à l'optique géométrique | `IntroductionOptiqueGeometrique` | 1. Sources et récepteurs de lumière (primaire/secondaire, ponctuelle/étendue) · 2. Milieux transparent/translucide/opaque · 3. Propagation rectiligne, rayons et faisceaux lumineux · 4. Ombre, pénombre et éclipses · 5. Célérité de la lumière · 6. Principe de réversibilité | à faire |
+| 12 | Réflexion et réfraction de la lumière blanche | `ReflexionRefractionLumiere` | 1. Réflexion de la lumière (lois de Snell-Descartes) · 2. Le miroir plan (image, construction, démonstration) · 3. Réfraction (indice, lois de Snell-Descartes, n1sin i1=n2sin i2) · 4. Réflexion totale, angle limite, fibre optique, fontaine lumineuse · 5. Lame à faces parallèles (déplacement latéral) | à faire |
+| 13 | Les lentilles minces | `LentillesMinces` | 1. Généralités : types de lentilles, symboles · 2. Caractéristiques (centre optique, foyers, distance focale, vergence, plans focaux, conditions de Gauss) · 3. Construction graphique (trois rayons particuliers) · 4. Relations de conjugaison (Descartes, Newton), grandissement · 5. Applications : loupe, appareil photographique, œil réduit | à faire |
+
+Convention de nommage des scènes pour cette matière :
+`Physique_<NomChapitre>_NN.py` (ex : `Physique_EnergieMecanique_01.py`).
+Tag de rendu HD par chapitre : `chapitre__1ereC__Physique__<NomChapitre>`.
+
+Le découpage précis en scènes (une scène par notion, jamais fourre-tout —
+voir CLAUDE.md) est affiné au moment d'écrire chaque chapitre, à partir de
+la lecture intégrale de ses pages dans le PDF.
+
+---
+
 ## Autres matières/séries — à découper
 
 Sommaire à extraire depuis le PDF source correspondant avant d'écrire la
 moindre scène (voir CLAUDE.md, section "Pipeline de travail").
 
-- `1ereC/Physique.pdf` (141 pages)
 - `1ereD/Maths.pdf` (196 pages)
 - `1ereD/Physique-Chimie.pdf` (293 pages)
